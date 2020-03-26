@@ -1,3 +1,8 @@
+// class Audio {
+//     constructor()
+
+// }
+
 
 window.addEventListener('keydown', function (e) {
     audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
@@ -26,10 +31,10 @@ function playAudio() {
 
 function addTransitionClass() {
     key.classList.add('playing')
-    removeTransitionClass()
+    removeTransitionClass(key)
 }
 
-function removeTransitionClass() {
+function removeTransitionClass(key) {
     setTimeout(() => {
         key.classList.remove('playing')
     }, 100);
