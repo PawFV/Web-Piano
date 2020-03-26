@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Lovely Piano</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="">
+  </head>
+
+  <body>
+
+    <div class="keys">
+      <div data-key="65" class="whitekey key">
+        <div class="flex-text">
+          <span class="key-sound">a</span>
+        </div>
+
+      </div>
+
+      <div data-key="87" class="blackkey key">
+        <div class="flex-text">
+
+          <span class="key-sound">w</span>
+        </div>
+      </div>
+      <div data-key="83" class="whitekey key">
+        <div class="flex-text">
+          <span class="key-sound">s</span>
+        </div>
+
+      </div>
+      <div data-key="69" class="blackkey key">
+        <div class="flex-text">
+
+          <span class="key-sound">e</span>
+        </div>
+      </div>
+      <div data-key="68" class="whitekey key">
+        <div class="flex-text">
+
+          <span class="key-sound">d</span>
+        </div>
+      </div>
+
+
+      <div data-key="70" class="whitekey key">
+        <div class="flex-text">
+
+          <span class="key-sound">f</span>
+        </div>
+      </div>
+      <div data-key="84" class="blackkey key">
+        <div class="flex-text">
+
+          <span class="key-sound">t</span>
+        </div>
+      </div>
+      <div data-key="71" class="whitekey key">
+        <div class="flex-text">
+
+          <span class="key-sound">g</span>
+        </div>
+      </div>
+      <div data-key="89" class="blackkey key">
+        <div class="flex-text">
+
+          <span class="key-sound">y</span>
+        </div>
+      </div>
+      <div data-key="72" class="whitekey key">
+        <div class="flex-text">
+
+          <span class="key-sound">a</span>
+        </div>
+      </div>
+      <div data-key="85" class="blackkey key">
+        <div class="flex-text">
+
+          <span class="key-sound">u</span>
+        </div>
+      </div>
+      <div data-key="74" class="whitekey key" style="border:none">
+        <div class="flex-text">
+
+          <span class="key-sound">j</span>
+        </div>
+      </div>
+
+    </div>
+
+    <audio data-key="65" src="sounds/C.mp3"></audio>
+    <audio data-key="87" src="sounds/Db.mp3"></audio>
+    <audio data-key="83" src="sounds/D.mp3"></audio>
+    <audio data-key="68" src="sounds/E.mp3"></audio>
+    <audio data-key="69" src="sounds/Eb.mp3"></audio>
+    <audio data-key="70" src="sounds/F.mp3"></audio>
+    <audio data-key="71" src="sounds/G.mp3"></audio>
+    <audio data-key="84" src="sounds/Gb.mp3"></audio>
+    <audio data-key="72" src="sounds/A.mp3"></audio>
+    <audio data-key="89" src="sounds/Ab.mp3"></audio>
+    <audio data-key="74" src="sounds/B.mp3"></audio>
+    <audio data-key="85" src="sounds/Bb.mp3"></audio>
+
+
+    <script>
+      window.addEventListener('keydown', function (e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+        const key = document.querySelector(`div[data-key="${e.keyCode}"]`)
+        playAudioByKey(audio, key)
+      })
+      window.addEventListener('click', function (r) {
+        const audioClick = document.querySelector(`audio[data-key="${r.path[1].getAttribute('data-key')}"]`)
+        const keyClick = document.querySelector(`div[data-key="${r.path[1].getAttribute('data-key')}"]`)
+        playAudioByKey(audioClick, keyClick)
+      })
+
+      function playAudioByKey(audio, key) {
+        if (!audio) return
+        audio.currentTime = 0
+        audio.play()
+        key.classList.add('playing')
+        removeTransition(key)
+      }
+      function removeTransition(key) {
+        setTimeout(() => {
+          key.classList.remove('playing')
+        }, 100);
+
+      }
+
+    </script>
+
+
+  </body>
+
+</html>
