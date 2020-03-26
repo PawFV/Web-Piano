@@ -1,9 +1,3 @@
-// class Audio {
-//     constructor()
-
-// }
-
-
 window.addEventListener('keydown', function (e) {
     audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
     key = document.querySelector(`div[data-key="${e.keyCode}"]`)
